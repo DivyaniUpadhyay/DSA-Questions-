@@ -1,0 +1,55 @@
+// There is a lift in your society that can accommodate a maximum weight of X units. T weights of the people planning to use the lift are given in an integer array A of size Your task is to find and return an integer value representing the maximum number o people that can use the lift together without exceeding its weight capacity.
+// Input Specification:
+// input1: An integer value N representing the number of people planning to use the
+// inputz: An integer value X representing the maximum weight capacity of the lift
+// input3: An integer array A containing the weights of the people planning to use
+// the lift.
+// Output Specification:
+// Return an integer value representing the maximum number of people that can use the lift together without exceeding its weight capacity:
+// Program :
+
+#include <iostream>
+#include <vector>
+#include <algorithm> 
+
+using namespace std;
+
+int R( vector<int> & p, int &X ,int  &N) {
+   int max_people = 0;
+   int sumOf_totalWeight =0;
+   int sum;
+   for(int i : p){
+       sumOf_totalWeight += i;
+   }
+   if(sumOf_totalWeight <= X){
+       return N;
+   }
+   
+   if (sumOf_totalWeight > X){
+    for(int i = 0; i<p.size(); i++){
+        sum += p[i];
+        if(sum <= X){
+       ++max_people ;
+            }
+        }   
+       
+   }
+   return max_people ;
+}
+
+int main() {
+    int N;
+    cout << "number of people planning to use the lift : ";
+    cin >> N;
+    int X;
+    cout<<"the maximum weight capacity of the lift :";
+    cin>>X;
+    vector<int> A(N);
+    cout << "the weights of the people planning to use the lift:  ";
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
+    }
+    int d = R(A,X,N); 
+    cout << "Max Number of People  : " << d << endl; 
+    return 0;
+}
