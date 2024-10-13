@@ -1,0 +1,63 @@
+// Q 1.
+//One of the shops in HackerMall is offering discount coupons based on a puzzling problem. There are intags where each tag has a value denoted by valfil. A customer needs to choose the tags in such a way that the sum of values is even.
+//The goal is to find the maximum possible even sum of values of tags that can be chosen.
+
+//Note: 2
+//It is guaranteed that there is at least one tag with an even value.
+
+//• The tags can have positive or negative values.
+//It can be possible to choose no tags at all
+
+//1. Find sum of all positive integers 
+//2. Check your sum is even then return evensum 
+//3. Otherwise  Sort your list & find minimum odd positive number & return evensum- odd positive number
+
+//Program :
+
+#include <iostream>
+#include <vector>
+#include <algorithm> 
+
+using namespace std;
+
+int R( vector<int> & p) {
+    int evenSum = 0;
+    vector<int> positiveOddValues;
+    for (int value : p) {
+        if (value > 0) {
+            evenSum += value; 
+            if (value % 2 != 0) { 
+                positiveOddValues.push_back(value);
+            }
+        }
+    }
+
+
+    if (evenSum % 2 == 0) {
+        return evenSum;
+    }
+    else {
+    
+        if (!positiveOddValues.empty()) {
+            sort(positiveOddValues.begin(), positiveOddValues.end());
+            int minOdd = positiveOddValues[0];
+            return evenSum - minOdd;
+        } else {
+            return evenSum;
+        }
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of tags: ";
+    cin >> n;
+    vector<int> arr(n);
+    cout << "Enter the values of tags: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    int d = R(arr); 
+    cout << "Result: " << d << endl; 
+    return 0;
+}
