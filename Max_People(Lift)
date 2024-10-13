@@ -13,28 +13,24 @@
 #include <algorithm> 
 
 using namespace std;
-
-int R( vector<int> & p, int &X ,int  &N) {
+int R( vector<int> &A, int &X ) {
    int max_people = 0;
    int sumOf_totalWeight =0;
-   int sum;
-   for(int i : p){
-       sumOf_totalWeight += i;
-   }
-   if(sumOf_totalWeight <= X){
-       return N;
-   }
+   int sum=0;
+   sort(A.begin() , A.end()) ;
    
-   if (sumOf_totalWeight > X){
-    for(int i = 0; i<p.size(); i++){
-        sum += p[i];
-        if(sum <= X){
-       ++max_people ;
-            }
-        }   
+   for(int i=0 ; i<A.size() ;i++){
+       sumOf_totalWeight += A[i];
        
-   }
-   return max_people ;
+       if (sumOf_totalWeight<=X)
+       {
+           max_people ++ ;
+       }
+       else {
+           break ;
+       }
+ }
+   return max_people ;
 }
 
 int main() {
