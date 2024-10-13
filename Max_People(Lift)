@@ -45,7 +45,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         cin >> A[i];
     }
-    int d = R(A,X,N); 
+    int d = R(A,X); 
     cout << "Max Number of People  : " << d << endl; 
     return 0;
 }
