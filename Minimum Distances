@@ -1,0 +1,36 @@
+// HackerRank 
+// link of the Q : https://www.hackerrank.com/challenges/minimum-distances/problem
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+import java.util.HashMap;
+
+class Result {
+
+
+    public static int minimumDistances(List<Integer> a) {
+        int min_dis = Integer.MAX_VALUE;
+        int preindx = 0; 
+        int current_value;
+     HashMap <Integer , Integer> newmap = new HashMap <> ();
+     for(int i =0; i<a.size(); i++){
+         current_value = a.get(i);
+     if(newmap.containsKey(current_value)){
+         preindx = newmap.get(current_value);
+         min_dis = Math.min((i - preindx) , min_dis);
+         
+     }
+     else {
+         newmap.put(current_value, i);
+     }
+     }
+     return (min_dis == Integer.MAX_VALUE ? -1 : min_dis);
+    }
+
+}
+
