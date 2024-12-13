@@ -1,0 +1,29 @@
+// example :
+// input  n = 7 , m =11
+// explanation : sum of cubes  = 7^3 + 11^3 = 1674
+// sum of squares = 7^2 + 11^2 = 170
+// DIFF : 1674 - 170 = 1504
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int DifferenceCubesSquares(int n , int m){
+    int cubes = pow(n,3) + pow(m,3);
+    int sq = (n*n) + (m*m);
+    int diff = cubes - sq;
+    return diff;
+}
+
+int main(){
+   int n;
+   cin>>n;
+   int m;
+   cin>>m;
+   int s = DifferenceCubesSquares(n ,m);
+   cout<<s;
+}
+
+
+// input : 7 11
+// output : 1504
